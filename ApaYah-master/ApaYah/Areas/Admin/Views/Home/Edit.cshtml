@@ -1,0 +1,61 @@
+﻿@model ApaYah.Models.Blogs
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_DarkLayout.cshtml";
+}
+
+
+<div class="">
+
+    @{
+        var c = @Model.Id;
+    }
+    <table width="100%" border="0">
+        <tr>
+            <td align="left">
+                <div>
+                    &nbsp;&nbsp;
+                    <a href="@Url.Action("Index", "Home")" class="fas fa-home fa-2x" title="Back Home"></a>
+                </div>
+            </td>            
+        </tr>
+    </table>
+    <h1>Edit Content Blog</h1>
+    <hr />
+    <br />
+    <div class="col-md-4">
+        <form asp-action="Edit" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <br /><br />
+                <label asp-for="Title" class="control-label">Judul</label><br /><br />
+                <input asp-for="Title" style="font-family: comic sans MS; border-radius: 8px; width: 70%; height: 30px; color: black" value="@Model.Title" name="Title" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <br /><br />
+                <label asp-for="Content" class="control-label">Content</label><br /><br />
+                <textarea asp-for="Content" class="form-group" value="@Model.Content" style="font-family: comic sans MS; color: black; width: 100%; height: 150px; border-radius: 8px" name="Content">@Model.Content</textarea>
+                <span asp-validation-for="Content" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <br /><br />
+                <button type="submit" class="btn btn-primary btn-lg"
+                        onclick="alert('Blog telah tersimpan di Draft !')"
+                        style="
+                                cursor:pointer;
+                                background-color: lime;
+                                font-size:16px ;
+                                padding: 7px 18px;
+                                border-radius: 8px;
+                                transition-duration: 0.4s;
+
+                        ">
+                    Simpan & Review
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

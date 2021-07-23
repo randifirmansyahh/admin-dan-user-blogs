@@ -1,0 +1,48 @@
+﻿@{
+    Layout = "../Shared/_DarkLayout.cshtml";
+}
+
+
+<div align="center">
+    <div class="col-12" align="center">        
+        <form asp-action="Login" method="POST" align="center">
+            <div class="form-group" >
+                <div class="card" align="center">
+                    <div class="card-body">
+                        <br />
+                        <h2 align="center">Silahkan Masuk</h2><br />
+                        <hr />
+                        <br />
+                        <label>Username</label><br /><br />
+                        <input type="text" name="Username" style="text-align: center; color: black; width: 300px; height: 30px; border-radius: 12px;" class="form-control-lg" />
+                    </div>
+                    <div class="card-body" align="center">
+                        <br />
+                        <br />
+                        <label>Password</label><br /><br />
+                        <input type="password" name="Password" style="text-align:center;color:black ;width:300px;height:30px;border-radius: 12px;" class="form-control-lg" />
+                    </div>
+                    <div class="card-body" align="center"><br /><br />
+                                                                <hr />
+                                                                <br />
+                                                                <br />
+                        <button type="submit" class="btn btn-primary btn-lg" 
+                                style="
+                                cursor:pointer;
+                                background-color: lime; 
+                                font-size:20px ;
+                                padding: 7px 18px;
+                                border-radius: 8px;
+                                transition-duration: 0.4s;
+                        
+                        ">Masuk</button>                        
+                    </div>
+                    <br /><br />
+                    <div>
+                        Belum memiliki akun user? <a href="@Url.Action("RegisterUser", "User")" style="color:chartreuse">Daftar</a>
+                    </div>                    
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

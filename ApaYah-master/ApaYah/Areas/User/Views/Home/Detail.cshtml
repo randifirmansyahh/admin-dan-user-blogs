@@ -1,0 +1,51 @@
+﻿@model ApaYah.Models.Blogs
+
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+
+<div align="left">
+    &nbsp;&nbsp;
+    <a href="@Url.Action("Index")" class="fas fa-home fa-2x" title="Back Home"></a>
+</div>
+
+<div>
+    <div style="font-size:20px" align="center">
+        @Html.DisplayFor(model => model.Title)
+    </div>
+</div>
+<br />
+<hr />
+<div style="font-size:13px">
+    <br />
+    <strong>
+        @Html.DisplayFor(model => model.Author)
+    </strong>
+    <br />
+    <div style="font-size:10px">
+        @Html.DisplayFor(model => model.CreateDate)
+    </div>
+</div>
+<br />
+@{
+    int c = Model.Id;
+    string Foto = "/../dist/img/PhotoBlog";
+    if (c > 8)
+    {
+        c %=8;
+    }
+
+    Foto = Foto + c + ".jpg";
+}
+<div align="center">
+    <img src="@Foto" alt="Alternate Text" style="width:400px;height:200px" />
+</div>
+<br />
+<br />
+
+<div style="text-align: justify;">
+    &ensp;&ensp;&ensp;&ensp;&ensp;@Html.Raw(Model.Content)
+    <br /><br /><br />
+</div>

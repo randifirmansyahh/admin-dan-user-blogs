@@ -1,0 +1,9 @@
+Done - halaman edit blog
+Done - halaman detail blog
+Done - filter blog
+Done - home user
+Done - register user
+Done - Atur content blog
+Done - tambah tombol back to home di detail
+Done - tambah tombol back to home dan back to detail di edit 
+Done - Home di detail user

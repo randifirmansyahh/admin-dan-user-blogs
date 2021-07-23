@@ -1,0 +1,84 @@
+﻿@{ Layout = "_AdminLayout"; }
+@model IEnumerable<ApaYah.Models.Blogs>
+
+<br />
+<h3 align="center" style="font-family:'Comic Sans MS'">Semua Blogs</h3>
+<br />
+
+<div class="card">
+    <table class="table">
+        <thead>
+            <tr>
+                <td align="center" width="30%">
+                    <strong style="font-size:15px">@Html.DisplayNameFor(model => model.Title)</strong>
+                </td>
+                <td width="10%">
+                    <strong style="font-size:15px">@Html.DisplayNameFor(model => model.Author)</strong>
+                </td>
+                <td align="center" width="10%">
+                    <strong style="font-size:15px">@Html.DisplayNameFor(model => model.CreateDate)</strong>
+                </td>
+                <td align="center" width="10%">
+                    <strong style="font-size:15px">@Html.DisplayNameFor(model => model.Status)</strong>
+                </td>
+                <td align="center" width="10%"><strong style="font-size:15px">Unggah/TakeDown</strong></td>
+                <td align="center" width="30%"><strong style="font-size:15px">Aksi</strong></td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+<tr>
+    <td>
+        @{ string a = item.Title;
+            a = a.Length > 62 ? a = a.Substring(0, 62) + "..." : a;
+@Html.DisplayFor(modelItem => a); }
+    </td>
+    <td>
+        @{ a = item.Author;
+            a = a.Length > 16 ? a = a.Substring(0, 16) + "..." : a;
+@Html.DisplayFor(modelItem => a); }
+    </td>
+    <td align="center">
+        @Html.DisplayFor(modelItem => item.CreateDate)
+    </td>
+    <td align="center">
+        @Html.DisplayFor(modelItem => item.Status)
+    </td>
+
+    @{ if (item.Status == true)
+        {
+<td align="center">
+    <a href="@Url.Action("TakeDown", "Home", new { id = item.Id })"
+       class="fas fa-download fa-2x" title="Take Down" style="color:red"
+       onclick="if (! confirm('Yakin untuk Take-Down blog ini ?')) { return false; }">
+    </a>
+</td>
+                    <td align="center">
+                        <a href="@Url.Action("Detail", "Home", new { id = item.Id })" class="fas fa-book fa-2x" title="Detail" style="color:gray">
+                        </a>
+                    </td> }
+                                    else
+                                    {
+                    <td align="center">
+                        <a href="@Url.Action("Unggah", "Home", new { id = item.Id })"
+                           class="fas fa-upload fa-2x" title="Unggah" style="color:green"
+                           onclick="if (! confirm('Yakin untuk mengunggah blog ini ?')) { return false; }">
+                        </a>
+                    </td>
+                                        <td align="center">
+                                            <a href="@Url.Action("Edit", "Home", new { id = item.Id })" class="fas fa-pencil-alt fa-2x" title="Edit">
+
+                                            </a> &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
+
+                                            <a href="@Url.Action("Detail", "Home", new { id = item.Id })" class="confirmation fas fa-book fa-2x" title="Detail" style="color:gray">
+
+                                            </a> &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
+                                            <a href="@Url.Action("Delete", "Home", new { id = item.Id })" onclick="if (! confirm('Yakin untuk menghapus blog ini ?')) { return false; }" class="delete fas fa-trash-alt fa-2x" title="Hapus" style="color:red"></a>
+                                        </td> } }
+</tr>
+}
+        </tbody>
+    </table>
+</div>
+<br /><br />

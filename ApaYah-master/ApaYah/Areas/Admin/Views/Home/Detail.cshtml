@@ -1,0 +1,73 @@
+﻿@model ApaYah.Models.Blogs
+
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Views/Shared/_DarkLayout.cshtml";
+}
+
+
+
+<div>
+    @{
+        var c = @Model.Id;
+    }
+    <table width="100%" border="0">
+        <tr>
+            <td align="left">
+                <div align="left">
+                    &nbsp;&nbsp;
+                    <a href="@Url.Action("Index", "Home")" class="fas fa-home fa-2x" title="Back Home"></a>
+                </div>
+            </td>
+            <td align="right">
+                <div align="right">
+                    @{
+                        if (Model.Status == true)
+                        {
+                            <a href="@Url.Action("Edit", "Home", new { id = c })" class="fas fa-pencil-alt fa-2x" title="Edit" onclick="if (! confirm('Blog telah di terbitkan, Takedown terlebih dahulu untuk melanjutkan edit ?')) { return false; }"></a>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("Edit", "Home", new { id = c })" class="fas fa-pencil-alt fa-2x" title="Edit"></a>
+                        }
+                    }
+                </div>
+            </td>
+        </tr>
+    </table>
+        
+    <br />
+    <div style="font-size:20px" align="center">
+        @Html.DisplayFor(model => model.Title)
+    </div>
+</div>
+<br />
+<hr />
+<div style="font-size:13px">
+    <br />
+    <strong>
+        @Html.DisplayFor(model => model.Author)
+    </strong>
+    <br />
+    <div style="font-size:10px">
+        @Html.DisplayFor(model => model.CreateDate)
+    </div>
+</div>
+<br />
+@{
+    var rnd= new Random();
+    string Foto = "/../dist/img/PhotoBlog";
+    if (c > 9)
+    {
+        c = rnd.Next(1, 9);
+    }
+    
+    Foto = Foto + c + ".jpg";
+}
+<img style='width:500px;height:300px' src='@Foto' />
+
+<div style="text-align: justify;">
+    <br /><br />
+    &ensp;&ensp;&ensp;&ensp;&ensp;@Html.Raw(Model.Content)
+    <br /><br /><br />
+</div>
